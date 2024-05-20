@@ -13,7 +13,12 @@ public class Equipment {
     }
 
     public Equipment(String name, String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+        this.serialNumber = serialNumber;
+    }
+
+    public Equipment() {
+
     }
 
     public String getName() {
