@@ -27,7 +27,7 @@ public class Equipment {
         this.name = name;
         this.serialNumber = serialNumber;
         this.owner = owner;
-        this.taken = false;
+        this.taken = true;
     }
 
     public String getName() {
@@ -45,7 +45,7 @@ public class Equipment {
     public boolean isTaken() {
         return taken;
     }
-    
+
     public void provideEquipmentToUser(final String owner) {
         this.owner = owner;
         this.taken = true;
