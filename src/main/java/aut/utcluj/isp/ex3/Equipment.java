@@ -10,15 +10,24 @@ public class Equipment {
     private boolean taken;
 
     public Equipment(String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.name = null;
+        this.serialNumber = serialNumber;
+        this.owner = null;
+        this.taken = false;
     }
 
     public Equipment(String name, String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+        this.serialNumber = serialNumber;
+        this.owner = null;
+        this.taken = false;
     }
 
     public Equipment(String name, String serialNumber, String owner) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+        this.serialNumber = serialNumber;
+        this.owner = owner;
+        this.taken = false;
     }
 
     public String getName() {
@@ -36,23 +45,14 @@ public class Equipment {
     public boolean isTaken() {
         return taken;
     }
-
-    /**
-     * Provide the owner of the equipment
-     * Equipment should be set as taken
-     *
-     * @param owner - owner name
-     */
+    
     public void provideEquipmentToUser(final String owner) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.owner = owner;
+        this.taken = true;
     }
 
-    /**
-     * Equipment is returned to the office
-     * Equipment should not be set as taken
-     * Remove the owner
-     */
     public void returnEquipmentToOffice() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.owner = null;
+        this.taken = false;
     }
 }
