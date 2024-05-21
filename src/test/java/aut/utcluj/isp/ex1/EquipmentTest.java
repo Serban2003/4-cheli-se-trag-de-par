@@ -26,7 +26,7 @@ public class EquipmentTest {
     public void testEquipmentEquals() {
         final Equipment firstEquipment = new Equipment("Dell", "SN123");
         final Equipment secondEquipment = new Equipment("Dell", "SN123");
-        assertTrue("Equipment objects should be equals", firstEquipment.equals(secondEquipment));
+        assertEquals("Equipment objects should be equals", firstEquipment, secondEquipment);
     }
 
     @Test
