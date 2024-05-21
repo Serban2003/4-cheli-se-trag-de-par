@@ -1,6 +1,6 @@
 package aut.utcluj.isp.ex4;
 
-import aut.utcluj.isp.ex5.EquipmentHistory;
+import aut.utcluj.isp.ex4.EquipmentHistory;
 
 import java.time.LocalDateTime;
 
@@ -12,18 +12,24 @@ public class Equipment {
     private String serialNumber;
     private String currentOwner;
     private boolean taken;
-    private EquipmentHistory equipmentHistory;
+    private EquipmentHistory equipmentHistory=new EquipmentHistory();
 
     public Equipment(String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        this.serialNumber = serialNumber;
     }
 
     public Equipment(String name, String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+        this.serialNumber = serialNumber;
     }
 
     public Equipment(String name, String serialNumber, String owner) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        this.name = name;
+        this.serialNumber = serialNumber;
+        this.currentOwner = owner;
     }
 
     public String getName() {
@@ -51,7 +57,13 @@ public class Equipment {
      * @param providedDate - provided date
      */
     public void provideEquipmentToUser(final String owner, final LocalDateTime providedDate) {
-        equipmentHistory.addEquipmentHistory(owner, Operation.PROVIDE, providedDate);
+        if(this.isTaken())
+            throw new EquipmentAlreadyProvidedException();
+        else{
+            this.taken=true;
+            this.currentOwner=owner;
+            equipmentHistory.addEquipmentHistory(owner, Operation.PROVIDE, providedDate);
+        }
     }
 
     /**
@@ -60,5 +72,7 @@ public class Equipment {
      */
     public void returnEquipmentToOffice() {
         equipmentHistory.addEquipmentHistory(this.currentOwner, Operation.RETURN, LocalDateTime.now());
+        this.currentOwner=null;
+        this.taken=false;
     }
 }
