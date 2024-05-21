@@ -1,13 +1,19 @@
 package aut.utcluj.isp.ex2;
 
+
 /**
  * @author stefan
  */
-public class Notebook {
+public class Notebook extends Equipment {
     private String osVersion;
+    private String serialNr;
+    private String name;
 
     public Notebook(String name, String serialNumber, String osVersion) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        super();
+        this.name=name;
+        this.serialNr=serialNumber;
+        this.osVersion=osVersion;
     }
 
     public String getOsVersion() {
@@ -15,6 +21,6 @@ public class Notebook {
     }
 
     public String start() {
-        return null;
+        return "Notebook "+ this.name + " started";
     }
 }
