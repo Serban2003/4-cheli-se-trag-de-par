@@ -1,5 +1,7 @@
 package aut.utcluj.isp.ex3;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,40 +10,35 @@ import java.util.Map;
  */
 public class EquipmentController {
 
-    /**
-     * Add new equipment to the list of equipments
-     *
-     * @param equipment - equipment to be added
-     */
+    List<Equipment> inventory = new ArrayList<>();
+
     public void addEquipment(final Equipment equipment) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        inventory.add(equipment);
     }
 
-    /**
-     * Get current list of equipments
-     *
-     * @return list of equipments
-     */
     public List<Equipment> getEquipments() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return inventory;
     }
 
-    /**
-     * Get number of equipments
-     *
-     * @return number of equipments
-     */
     public int getNumberOfEquipments() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return inventory.size();
     }
 
-    /**
-     * Group equipments by owner
-     *
-     * @return a dictionary where the key is the owner and value is represented by list of equipments he owns
-     */
     public Map<String, List<Equipment>> getEquipmentsGroupedByOwner() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Map<String, List<Equipment>> inventoryByOwner = new HashMap<>();
+
+        for(Equipment equipment : inventory){
+            String owner = equipment.getOwner();
+            List<Equipment> equipmentList;
+
+            if(inventoryByOwner.get(owner) == null) equipmentList = new ArrayList<>();
+            else equipmentList = inventoryByOwner.get(owner);
+
+            equipmentList.add(equipment);
+            inventoryByOwner.put(equipment.getOwner(), equipmentList);
+        }
+
+        return inventoryByOwner;
     }
 
     /**
@@ -50,6 +47,11 @@ public class EquipmentController {
      * @return deleted equipment instance or null if not found
      */
     public Equipment removeEquipmentBySerialNumber(final String serialNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(Equipment equipment : inventory)
+            if(equipment.getSerialNumber() == serialNumber){
+                inventory.remove(equipment);
+                return equipment;
+            }
+        return null;
     }
 }
