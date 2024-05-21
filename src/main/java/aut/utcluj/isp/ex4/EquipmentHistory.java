@@ -1,13 +1,14 @@
 package aut.utcluj.isp.ex4;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author stefan
  */
 public class EquipmentHistory {
-    private List<EquipmentHistoryDetails> historyDetailsList;
+    private List<EquipmentHistoryDetails> historyDetailsList=new ArrayList<>();
 
     /**
      * Add new history details
@@ -17,7 +18,8 @@ public class EquipmentHistory {
      * @param providedDate - provided date of the operation
      */
     public void addEquipmentHistory(final String owner, final Operation operation, final LocalDateTime providedDate) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        historyDetailsList.add(new EquipmentHistoryDetails(owner, operation, providedDate));
     }
 
     public List<EquipmentHistoryDetails> getHistoryDetailsList() {

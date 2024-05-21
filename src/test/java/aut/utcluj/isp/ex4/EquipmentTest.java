@@ -50,5 +50,6 @@ public class EquipmentTest {
 
         // return equipment to the office
         equipment.returnEquipmentToOffice();
+        throw new EquipmentNotProvidedException();
     }
 }
