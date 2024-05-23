@@ -55,9 +55,9 @@ public class EquipmentHistoryTest {
         final List<EquipmentHistoryDetails> historyDetails = equipmentHistory.sortEquipmentHistoryByDateDesc();
         assertNotNull("History details should not be null", historyDetails);
         assertEquals("History details size should be 2", 2, historyDetails.size());
-        assertEquals("First history should have RETURN operation type", Operation.RETURN, historyDetails.get(0).getOperation());
-        assertEquals("First history should have return date", returnDate, historyDetails.get(0).getDate());
-        assertEquals("Second history should have RETURN operation type", Operation.PROVIDE, historyDetails.get(1).getOperation());
-        assertEquals("Second history should have return date", provideDate, historyDetails.get(1).getDate());
+        assertEquals("First history should have PROVIDE operation type", Operation.PROVIDE, historyDetails.get(0).getOperation());
+        assertEquals("First history should have provide date", provideDate, historyDetails.get(0).getDate());
+        assertEquals("Second history should have RETURN operation type", Operation.RETURN, historyDetails.get(1).getOperation());
+        assertEquals("Second history should have return date", returnDate, historyDetails.get(1).getDate());
     }
 }
