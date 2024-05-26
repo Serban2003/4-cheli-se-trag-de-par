@@ -12,7 +12,7 @@ public class Equipment {
     private String serialNumber;
     private String currentOwner;
     private boolean taken;
-    private EquipmentHistory equipmentHistory=new EquipmentHistory();
+    private EquipmentHistory history=new EquipmentHistory();
 
     public Equipment(String serialNumber) {
         //throw new UnsupportedOperationException("Not supported yet.");
@@ -62,7 +62,7 @@ public class Equipment {
         else{
             this.taken=true;
             this.currentOwner=owner;
-            equipmentHistory.addEquipmentHistory(owner, Operation.PROVIDE, providedDate);
+            history.addEquipmentHistory(owner, Operation.PROVIDE, providedDate);
         }
     }
 
@@ -71,8 +71,12 @@ public class Equipment {
      * If equipment is taken, the current user of the equipment should be removed, and taken status should be set to false
      */
     public void returnEquipmentToOffice() {
-        equipmentHistory.addEquipmentHistory(this.currentOwner, Operation.RETURN, LocalDateTime.now());
+        history.addEquipmentHistory(this.currentOwner, Operation.RETURN, LocalDateTime.now());
         this.currentOwner=null;
         this.taken=false;
+    }
+
+    public EquipmentHistory getHistory() {
+        return history;
     }
 }

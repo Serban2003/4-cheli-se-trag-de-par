@@ -8,7 +8,7 @@ import java.util.List;
  * @author stefan
  */
 public class EquipmentHistory {
-    private List<EquipmentHistoryDetails> historyDetailsList=new ArrayList<>();
+    private List<EquipmentHistoryDetails> details=new ArrayList<>();
 
     /**
      * Add new history details
@@ -19,10 +19,10 @@ public class EquipmentHistory {
      */
     public void addEquipmentHistory(final String owner, final Operation operation, final LocalDateTime providedDate) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        historyDetailsList.add(new EquipmentHistoryDetails(owner, operation, providedDate));
+        details.add(new EquipmentHistoryDetails(owner, operation, providedDate));
     }
 
     public List<EquipmentHistoryDetails> getHistoryDetailsList() {
-        return historyDetailsList;
+        return details;
     }
 }
